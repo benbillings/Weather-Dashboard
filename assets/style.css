@@ -1,0 +1,51 @@
+h1 {
+    font-size: 2.5em;
+    margin: 20px;
+    color: white;
+    text-align: center;
+    background-color: blue;
+    padding: 15px;
+    border-radius: 25px;
+}
+
+#form {
+    border-bottom: 2px black solid;
+    padding-bottom: 20px;
+    margin: 0 20px;
+}
+
+form {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    font-size: 1.2em;
+    margin: 0 20px 20px;
+}
+
+form input {
+    margin: 0 3px 0 10px;
+    height: 2em;
+}
+
+/* where the previous searches will populate */
+#prevSearch {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;   
+}
+
+#prevSearch * {
+    margin: 0 5px;
+}
+
+#prevSearch h2 {
+    font-size: 1.2em;
+}
+
+#prevSearch p {
+    background-color: #efefef;
+    border: black 1px solid;
+    padding: 4px;
+    border-radius: 4px;
+    width: fit-content;
+}
