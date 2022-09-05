@@ -28,21 +28,21 @@ form input {
 }
 
 /* where the previous searches will populate */
-#prevSearch {
+#searchHistory {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;   
 }
 
-#prevSearch * {
+#searchHistory * {
     margin: 0 5px;
 }
 
-#prevSearch h2 {
+#searchHistory h2 {
     font-size: 1.2em;
 }
 
-#prevSearch p {
+#searchHistory p {
     background-color: #efefef;
     border: black 1px solid;
     padding: 4px;
