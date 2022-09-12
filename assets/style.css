@@ -27,6 +27,22 @@ form input {
     height: 2em;
 }
 
+.weatherDisplay {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.card {
+    width: 20%;
+    margin: 1%;
+    border: 1px black solid;
+}
+
+.card:hover {
+    border: 2px black solid;
+    box-shadow: 2px 2px 20px black;
+}
+
 /* where the previous searches will populate */
 #searchHistory {
     display: flex;
