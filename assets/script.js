@@ -9,34 +9,48 @@ var day4DivEl = document.getElementById('day4');
 var day5DivEl = document.getElementById('day5');
 var day6DivEl = document.getElementById('day6');
 
-var apiKey = '520320703f34c13be437af71fe35996e';
+const apiKey = '060d14e161e683217f175e18c35d2138';
 
-// var apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`;
-// var apiUrl2 = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
+searchBtnEl.addEventListener('click', getCity);
 
-
-function getCity (event) {
-    
-    event.preventDefault();
-    var cityName = cityInputEl.value;
-    
-    var cityHeading = document.createElement('h2');
-    cityHeading.textContent = cityName;
-    cityHeading.id = ('city-heading');
-    currentWeatherDivEl.append(cityHeading);
-
-    currentSearch = document.createElement('button');
-    currentSearch.textContent = cityName;
-    currentSearch.id = cityName;
-    currentSearch.id = 'result';
-    searchHistoryDivEl.append(currentSearch);
-    // currentSearch.setAttribute("href", "google.com")
-    
-    var apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&appid=${apiKey}`;
-
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => getWeatherData(data))
-
-        searchInputEl.value = ""
+function getCity() {
+    var searchInput = cityInputEl.value;
+    localStorage.setItem('cityName', searchInput);
 }
+
+// variable for city name
+var cityName = localStorage.getItem('cityName')
+fetchCity();
+
+// function to convert city name into lat and lon
+function fetchCity(data) {
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`)
+    .then(response => response.json())
+    .then(data => fetchWeatherData(data));
+}
+
+function fetchWeatherData(data) {
+    console.log(data);
+    var latitude = data[0].lat;
+    var longitude = data[0].lon;
+    console.log(latitude);
+    console.log(longitude);
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        let currentTemp = data.main.temp;
+        let highTemp = data.main.temp_max;
+        let lowTemp = data.main.temp_min;
+        let currentHumidity = data.main.humidity;
+        let windSpeed = data.wind.speed;
+        
+        console.log(currentTemp);
+        console.log(currentHumidity);
+        console.log(windSpeed);
+        
+    })
+
+}
+

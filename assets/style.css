@@ -39,7 +39,7 @@ form input {
 }
 
 .card:hover {
-    border: 2px black solid;
+    border: 1px black solid;
     box-shadow: 2px 2px 20px black;
 }
 
