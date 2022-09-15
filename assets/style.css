@@ -27,64 +27,23 @@ form input {
     height: 2em;
 }
 
-.weatherDisplay {
-    display: flex;
-    flex-flow: row wrap;
-}
-
-/* style for current city heading */
-#current-city button {
-    
+footer {
+    color: blue;
     text-align: center;
-    margin: .5rem;
-}
-
-.card {
-    width: 31%;
-    margin: 1%;
-    border: 1px black solid;
-}
-
-.card-title {
-    text-align: center;
-}
-
-h3.card-title {
-    text-transform: capitalize;
-    margin-bottom: 20px;
-    font-size: 2.5em;
-}
-
-h4.card-title {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-}
-
-.card-text {
+    border: blue 2px solid;
+    border-radius: 25px;
     padding: 15px;
-    line-height: .25;
-    font-size: 120%;
+    margin: 20px 30%;
 }
 
-/* where the previous searches will populate */
-#searchHistory {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;   
+footer a {
+    color: black;
 }
 
-#searchHistory * {
-    margin: 0 5px;
+footer a:hover {
+    color: red;
 }
 
-#searchHistory h2 {
-    font-size: 1.2em;
-}
-
-#searchHistory p {
-    background-color: #efefef;
-    border: black 1px solid;
-    padding: 4px;
-    border-radius: 4px;
-    width: fit-content;
+footer a:active {
+    color: green;
 }
