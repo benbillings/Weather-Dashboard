@@ -11,55 +11,62 @@ var day6DivEl = document.getElementById('day6');
 
 const apiKey = '060d14e161e683217f175e18c35d2138';
 
-const cityArr = [];
+const cityArr = ['hello', 'goodbye', 'japan'];
 
 function getCity() {
     var id = document.getElementsByTagName('input')[0];
     cityArr.push(id.value);
+    id.value = '';
+    console.log(cityArr);
     localStorage.setItem('cityLog', JSON.stringify(cityArr));
+    
     alert(localStorage.getItem('cityLog'));
+
+
 }
+
+console.log()
 
 
 // fetchCity();
 
 // function to convert city name into lat and lon
-function fetchCity(data) {
-    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`)
-    .then(response => response.json())
-    .then(data => fetchWeatherData(data));
-}
+// function fetchCity(data) {
+//     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`)
+//     .then(response => response.json())
+//     .then(data => fetchWeatherData(data));
+// }
 
-function fetchWeatherData(data) {
-    console.log(data);
+// function fetchWeatherData(data) {
+//     console.log(data);
     
-    var latitude = data[0].lat;
-    var longitude = data[0].lon;
-    console.log(latitude);
-    console.log(longitude);
+//     var latitude = data[0].lat;
+//     var longitude = data[0].lon;
+//     console.log(latitude);
+//     console.log(longitude);
     
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`)
-    .then(response => response.json())
-    .then(data => renderWeather(data)) 
-}    
+//     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`)
+//     .then(response => response.json())
+//     .then(data => renderWeather(data)) 
+// }    
 
-function renderWeather(data) {
-    console.log(data);
-    // convert date from unix
-    var unixTimeStamp = data.dt;
-    var milliseconds = unixTimeStamp * 1000;
-    var dateObject = new Date(milliseconds)
-    var dateArr = dateObject.toLocaleString().split(',');
+// function renderWeather(data) {
+//     console.log(data);
+//     // convert date from unix
+//     var unixTimeStamp = data.dt;
+//     var milliseconds = unixTimeStamp * 1000;
+//     var dateObject = new Date(milliseconds)
+//     var dateArr = dateObject.toLocaleString().split(',');
     
-    var date = dateArr[0];
-    var currentTemp = data.main.temp;
-    var highTemp = data.main.temp_max;
-    var lowTemp = data.main.temp_min;
-    var currentHumidity = data.main.humidity;
-    var windSpeed = data.wind.speed;
-    var iconCode = data.weather[0].icon;
+//     var date = dateArr[0];
+//     var currentTemp = data.main.temp;
+//     var highTemp = data.main.temp_max;
+//     var lowTemp = data.main.temp_min;
+//     var currentHumidity = data.main.humidity;
+//     var windSpeed = data.wind.speed;
+//     var iconCode = data.weather[0].icon;
     
-    const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@4x.png`
+    // const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@4x.png`
     
     
     
@@ -112,7 +119,7 @@ function renderWeather(data) {
 //     renderWindSpeed.innerHTML = 'Wind Speed: ' + windSpeed + ' mph';
 //     cardBody.appendChild(renderWindSpeed);
 //     renderWindSpeed.className = 'card-text';
-}
+// }
 
 
 
