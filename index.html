@@ -18,28 +18,27 @@
         <h1>Weather Dashboard</h1>
     </header>
 
-        <div id="form">
-            <form>
-                <label>Enter City:</label>
-                <input type="text" id="cityInput" name="cityInput" size="40" placeholder="Las Vegas">
-                <button type="submit" formtarget="_self" formtargetid="search-btn" onclick="getCity()">Search</button>
-            </form>
+    <div id="form" class="container container-sm container-lg container-xl container-xxl">
+        <form>
+            <label>Enter City:</label>
+            <input type="text" id="cityInput" name="cityInput" size="40" placeholder="Las Vegas">
+            <button type="submit" formtarget="_self" formtargetid="search-btn" id="search-btn">Search</button>
+        </form>
+    </div>
+
+
+    <div id="main" class="container text-center">
+        <div class="row align-items-start">
+            <div id="search-history" class="search-history col">Search History</div> 
+            <!-- container for current weather display -->
+            <div class="current-weather col">Current Weather</div>
+            <!-- container for future broadcast display -->
+            <div class="future-weather col">Future Weather</div>
         </div>
-
-
-    <main>
-        <div class="current-search"></div>
-        <div id="search-history" class="search-history"></div> 
-
-        <!-- container for current weather display -->
-        <div class="current-weathher"></div>
-
-        <!-- container for future broadcast display -->
-        <div class="future-weather"></div>
-    </main> 
+    </div> 
 
     <footer>
-        Link to the GitHub repository for this page <a href="https://github.com/benbillings/Weather-Dashboard">here</a>
+        To view the GitHub repository for this page, click <a href="https://github.com/benbillings/Weather-Dashboard">here</a>
     </footer>
 
 </body>
