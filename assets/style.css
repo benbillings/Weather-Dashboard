@@ -26,13 +26,40 @@ form input {
     height: 2em;
 }
 
-#main {
-    border: 2px black dashed;
-    padding: 20px;
-}
-
 .text-center {
     text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.card {
+    border: none;
+}
+
+.card-body {
+    border-radius: 50px;
+    padding: 30px 20px;
+}
+
+.card-img-top {
+    align-self: center;
+    width: 50%;
+}
+
+.card h3, h4, p {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.card-title {
+    margin-bottom: 18px;
+    font-size: 40px;
+}
+
+.card-text {
+    margin-top: 20px;
+    font-size: 18px;
 }
 
 
