@@ -84,6 +84,7 @@ function fetchWeather(data) {
             var lowTemp = data.main.temp_min;
             var currentHumidity = data.main.humidity;
             var windSpeed = data.wind.speed;
+            // var uvIndex = data.current.uvi;
             var iconCode = data.weather[0].icon;
             
             const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@4x.png`
@@ -133,7 +134,7 @@ function fetchWeather(data) {
                 displayWindSpeed.className = 'card-text text-left';
                 
                 
-                currentWeatherDivEl.append(cardDivEl);
+                currentWeatherDivEl.prepend(cardDivEl);
                 cardDivEl.append(weatherIcon);
                 cardDivEl.append(cardBodyDivEl);
                 cardBodyDivEl.append(displayCity, displayDate, displayCurrentTemp, displayHighTemp, displayLowTemp, displayHumidity, displayWindSpeed);
