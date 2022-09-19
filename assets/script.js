@@ -50,7 +50,7 @@ function recordSearchHistory() {
     // mostRecentSearch.setAttribute('onclick', "window.location = ")
     // NEEDS TO BE FINISHED ONCE SITE IS DEPLOYED
 
-    searchHistoryDivEl.append(mostRecentSearch);
+    searchHistoryDivEl.prepend(mostRecentSearch);
 
     // Use bootstrap collapse here
 }}

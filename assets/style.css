@@ -1,3 +1,7 @@
+body {
+    background-color: #ccc;
+}
+
 :root {
     --darkBlue: #191970;
 }
@@ -50,17 +54,11 @@ div#search-history.search-history.col {
     align-content: space-around;
     align-items: center;
 }
-h4 {
-    font-size: 28px;
-    border-bottom: 1px black solid;
-    margin-top: 18%;
-}
 
 #search-history-btn {
     border: 1px var(--darkBlue) solid;
     border-radius: 25px;
-    margin-top: 18%;
-    margin-bottom: -8%;
+    margin-top: 10%;
     font-size: 1.5em;
     width: 50%;
 }
@@ -73,6 +71,7 @@ h4 {
 
 .card {
     border: none;
+    background-color: #ccc;
 }
 
 .card-body {
