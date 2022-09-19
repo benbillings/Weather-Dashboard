@@ -39,18 +39,18 @@ function recordSearchHistory() {
     const capsCityName = cityName.split(' ').map(capitalize).join(' ');
 
     
-    let listSearchHistory = document.createElement('div');
-    listSearchHistory.setAttribute('class', 'list-group');
+    // let listSearchHistory = document.createElement('div');
+    // listSearchHistory.setAttribute('class', 'list-group search-his-div');
     
     let mostRecentSearch = document.createElement('button');
     mostRecentSearch.setAttribute('class', 'list-group-item list-group-item-action');
+    mostRecentSearch.setAttribute('id', 'search-history-btn');
     mostRecentSearch.setAttribute('type', 'button');
     mostRecentSearch.textContent = capsCityName;
     // mostRecentSearch.setAttribute('onclick', "window.location = ")
     // NEEDS TO BE FINISHED ONCE SITE IS DEPLOYED
 
-    searchHistoryDivEl.append(listSearchHistory);
-    listSearchHistory.append(mostRecentSearch);
+    searchHistoryDivEl.append(mostRecentSearch);
 
     // Use bootstrap collapse here
 }}

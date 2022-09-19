@@ -1,9 +1,13 @@
+:root {
+    --darkBlue: #191970;
+}
+
 h1 {
     font-size: 2.5em;
     margin: 20px;
     color: white;
     text-align: center;
-    background-color: blue;
+    background-color: var(--darkBlue);
     padding: 15px;
     border-radius: 25px;
 }
@@ -33,6 +37,29 @@ form input {
 .text-left {
     text-align: left;
 }
+
+
+div#search-history.search-history.col {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: space-around;
+    align-items: center;
+}
+
+#search-history-btn {
+    border: 1px var(--darkBlue) dotted;
+    border-radius: 25px;
+    margin-top: 12%;
+    margin-bottom: -5%;
+    font-size: 1.5em;
+    width: 50%;
+}
+
+#search-history-btn:hover {
+    background-color: var(--darkBlue);
+    color: white;
+}
+
 
 .card {
     border: none;
@@ -64,9 +91,9 @@ form input {
 
 
 footer {
-    color: blue;
+    color: var(--darkBlue);
     text-align: center;
-    border: blue 2px solid;
+    border: var(--darkBlue) 2px solid;
     border-radius: 25px;
     padding: 15px;
     margin: 20px 30%;
