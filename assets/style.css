@@ -1,5 +1,5 @@
 body {
-    background-color: #ccc;
+    /* background-color: #ccc; */
 }
 
 :root {
@@ -71,7 +71,7 @@ div#search-history.search-history.col {
 
 .card {
     border: none;
-    background-color: #ccc;
+    /* background-color: #ccc; */
 }
 
 .card-body {
@@ -86,8 +86,12 @@ div#search-history.search-history.col {
 }
 
 .card-title {
-    margin-bottom: 18px;
+    margin-bottom: 6px;
     font-size: 40px;
+}
+
+h4, h4.card-title {
+    font-size: 1.6em;
 }
 
 .card-text {

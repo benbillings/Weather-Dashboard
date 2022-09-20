@@ -9,16 +9,19 @@ var day4DivEl = document.getElementById('day4');
 var day5DivEl = document.getElementById('day5');
 var day6DivEl = document.getElementById('day6');
 
-searchBtnEl.addEventListener('click', function(event) {
-    event.preventDefault();
-    recordSearchHistory();
-    fetchWeather();
-})
-
 var searchHistoryArr = JSON.parse(localStorage.getItem('city-log'));
 if (!searchHistoryArr) {
     searchHistoryArr = [];
 }
+
+searchBtnEl.addEventListener('click', function(event) {
+    event.preventDefault();
+    $('.current-weather').empty();
+    $('.future-weather').empty();
+    recordSearchHistory();
+    fetchWeather();
+})
+
 
 function recordSearchHistory() {
     var cityName = cityInputEl.value;
@@ -29,8 +32,6 @@ function recordSearchHistory() {
         for (var i = 0; i < searchHistoryArr.length; i++) {
             // console.log(searchHistoryArr[i]);
         }
-    
-
 
     // var capsCityName = cityName.charAt(0).toUpperCase() + cityName.slice(1);
     function capitalize(cityName) {
@@ -68,6 +69,7 @@ function fetchWeather(data) {
         // console.log(latitude + ' and ' + longitude)
         var latitude = data[0].lat;
         var longitude = data[0].lon;
+        var state = data[0].state;
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=8161f3f9ed2905c19ded06d7bf135162`)
         .then(response => response.json())
         .then(data => { 
@@ -109,6 +111,10 @@ function fetchWeather(data) {
                 displayCity.textContent = capCityName;
                 displayCity.className = 'card-title';
                 
+                let displayState = document.createElement('h4');
+                displayState.textContent = state;
+                displayState.className = 'card-title';
+
                 let displayDate = document.createElement('h4');
                 displayDate.textContent = date;
                 displayCity.className = 'card-title';
@@ -137,7 +143,7 @@ function fetchWeather(data) {
                 currentWeatherDivEl.prepend(cardDivEl);
                 cardDivEl.append(weatherIcon);
                 cardDivEl.append(cardBodyDivEl);
-                cardBodyDivEl.append(displayCity, displayDate, displayCurrentTemp, displayHighTemp, displayLowTemp, displayHumidity, displayWindSpeed);
+                cardBodyDivEl.append(displayCity, displayState, displayDate, displayCurrentTemp, displayHighTemp, displayLowTemp, displayHumidity, displayWindSpeed);
                 
                 
                 if (data.weather[0].icon === '01n' || data.weather[0].icon === '02n' 
@@ -160,6 +166,18 @@ function fetchWeather(data) {
 
                 // CHANGE H1 AND FOOTER FOR NIGHT AND DAY AS WELL, NEED TO CREATE SLECTORS
             })
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            
+
+
+
+
+        })
     })
     cityInputEl.value = '';
 }
+
+        // fetch four day forcast data
