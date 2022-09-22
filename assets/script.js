@@ -95,14 +95,11 @@ function fetchWeather(data) {
                 return cityName.charAt(0).toUpperCase() + cityName.slice(1);
             }
             const capCityName = cityName.split(' ').map(capitalize).join(' ');
-            
-                let cardDivEl = document.createElement('div');
-                cardDivEl.className = 'card';
                 
                 let weatherIcon = document.createElement('img');
                 weatherIcon.src = iconUrl; 
                 weatherIcon.alt = data.weather[0].description + ' icon';
-                weatherIcon.className = 'card-img-top';
+                weatherIcon.className = 'icon-float-left';
                 
                 let cardBodyDivEl = document.createElement('div');
                 cardBodyDivEl.className = 'card-body';
@@ -117,7 +114,7 @@ function fetchWeather(data) {
 
                 let displayDate = document.createElement('h4');
                 displayDate.textContent = date;
-                displayCity.className = 'card-title';
+                displayDate.className = 'card-title';
 
                 let displayCurrentTemp = document.createElement('p');
                 displayCurrentTemp.textContent = 'Current Temperature: ' + currentTemp + ' degrees';
@@ -139,11 +136,9 @@ function fetchWeather(data) {
                 displayWindSpeed.textContent= 'Wind Speed: ' + windSpeed + ' mph';
                 displayWindSpeed.className = 'card-text text-left';
                 
-                
-                currentWeatherDivEl.prepend(cardDivEl);
-                cardDivEl.append(weatherIcon);
-                cardDivEl.append(cardBodyDivEl);
-                cardBodyDivEl.append(displayCity, displayState, displayDate, displayCurrentTemp, displayHighTemp, displayLowTemp, displayHumidity, displayWindSpeed);
+
+                currentWeatherDivEl.append(cardBodyDivEl);
+                cardBodyDivEl.append(weatherIcon, displayCity, displayState, displayDate, displayCurrentTemp, displayHighTemp, displayLowTemp, displayHumidity, displayWindSpeed);
                 
                 
                 if (data.weather[0].icon === '01n' || data.weather[0].icon === '02n' 
@@ -166,13 +161,32 @@ function fetchWeather(data) {
 
                 // CHANGE H1 AND FOOTER FOR NIGHT AND DAY AS WELL, NEED TO CREATE SLECTORS
             })
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-            
+            console.log(data);
+            let i = 0;
+            while (i <= data.list.length) {
+                var futureWeatherDivEl = document.getElementById('future-weather');
+                var datePlus1 = moment().add(1, 'days').format('YYYY-MM-D');
+                var day1Date = data.list[i].dt_txt.split(' ')[0];
+                var datePlus2 = moment().add(2, 'days').format('YYYY-MM-D');
+                var day2Date = data.list[i].dt_txt.split(' ')[0];
+                var datePlus3 = moment().add(3, 'days').format('YYYY-MM-D');
+                var day3Date = data.list[i].dt_txt.split(' ')[0];
+                var datePlus4 = moment().add(4, 'days').format('YYYY-MM-D');
+                var day4Date = data.list[i].dt_txt.split(' ')[0];
+                var datePlus5 = moment().add(5, 'days').format('YYYY-MM-D');
+                var day5Date = data.list[i].dt_txt.split(' ')[0];
+                
+                if (datePlus1 === day1Date) {
+                    var forcastDay1 = document.createElement('h4');
+                    forcastDay1.textContent = day1Date;
+                    futureWeatherDivEl.append(forcastDay1);
+                }
 
-
+                i++;
+            }
 
 
         })
