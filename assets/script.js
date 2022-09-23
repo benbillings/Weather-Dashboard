@@ -2,12 +2,8 @@ var cityInputEl = document.getElementById('cityInput');
 var searchBtnEl = document.getElementById('search-btn');
 var searchHistoryDivEl = document.getElementById('search-history');
 var currentWeatherDivEl = document.querySelector('.current-weather');
+var cardBodyDivEl = document.querySelector('.card-body');
 var futureWeatherDivEl = document.getElementById('future-weather');
-var day2DivEl = document.getElementById('day2');
-var day3DivEl = document.getElementById('day3');
-var day4DivEl = document.getElementById('day4');
-var day5DivEl = document.getElementById('day5');
-var day6DivEl = document.getElementById('day6');
 
 var searchHistoryArr = JSON.parse(localStorage.getItem('city-log'));
 if (!searchHistoryArr) {
@@ -73,7 +69,7 @@ function fetchWeather(data) {
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=8161f3f9ed2905c19ded06d7bf135162`)
         .then(response => response.json())
         .then(data => { 
-            console.log(data);
+            // console.log(data);
             // convert date from unix
             var unixTimeStamp = data.dt;
             var milliseconds = unixTimeStamp * 1000;
@@ -88,6 +84,7 @@ function fetchWeather(data) {
             var windSpeed = data.wind.speed;
             // var uvIndex = data.current.uvi;
             var iconCode = data.weather[0].icon;
+            localStorage.setItem('icon-code', iconCode);
             
             const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@4x.png`
             
@@ -165,30 +162,85 @@ function fetchWeather(data) {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            let i = 0;
-            while (i <= data.list.length) {
-                var futureWeatherDivEl = document.getElementById('future-weather');
-                var datePlus1 = moment().add(1, 'days').format('YYYY-MM-D');
-                var day1Date = data.list[i].dt_txt.split(' ')[0];
-                var datePlus2 = moment().add(2, 'days').format('YYYY-MM-D');
-                var day2Date = data.list[i].dt_txt.split(' ')[0];
-                var datePlus3 = moment().add(3, 'days').format('YYYY-MM-D');
-                var day3Date = data.list[i].dt_txt.split(' ')[0];
-                var datePlus4 = moment().add(4, 'days').format('YYYY-MM-D');
-                var day4Date = data.list[i].dt_txt.split(' ')[0];
-                var datePlus5 = moment().add(5, 'days').format('YYYY-MM-D');
-                var day5Date = data.list[i].dt_txt.split(' ')[0];
-                
-                if (datePlus1 === day1Date) {
-                    var forcastDay1 = document.createElement('h4');
-                    forcastDay1.textContent = day1Date;
-                    futureWeatherDivEl.append(forcastDay1);
-                }
+            var futureWeatherDivEl = document.querySelector('.future-weather');
+            // create div for each day
+            var day1DivEl = document.createElement('div');
+            futureWeatherDivEl.append(day1DivEl);
 
-                i++;
+            var day2DivEl = document.createElement('div');
+            futureWeatherDivEl.append(day2DivEl);
+
+            var day3DivEl = document.createElement('div');
+            futureWeatherDivEl.append(day3DivEl);
+
+            var day4DivEl = document.createElement('div');
+            futureWeatherDivEl.append(day4DivEl);
+
+            var day5DivEl = document.createElement('div');
+            futureWeatherDivEl.append(day5DivEl);
+
+
+            let minTempArr = [];
+            let maxTempArr = [];
+            
+
+            for (var x = 0; x < 41; x++) {
+                var dateTimeArr = data.list[x].dt_txt;
+                var splitDateTimeArr = dateTimeArr.split(' ');
+                var dateOnly = splitDateTimeArr[0];
+                var currentDt = moment().format('YYYY-MM-D');
+                while (dateOnly = currentDt) {
+                    minTempArr.push(data.list[x].main.temp_min);
+                    maxTempArr.push(data.list[x].main.temp_max);
+                    var currentMinTemp = Math.min(...minTempArr);
+                    var currentMaxTemp = Math.max(...maxTempArr);
+                    console.log(currentMaxTemp, currentMinTemp);
+                }
             }
 
 
+
+
+            // var dayDivArr = [day1DivEl, day2DivEl, day3DivEl, day4DivEl, day5DivEl];
+            // for (var i = 6; i < data.list.length; i+= 8) {
+            //     console.log(i);
+            //     var day1Temp = ;
+            // }
+            
+            // console.log(currentDayDiv);
+
+
+
+            var iconCode = localStorage.getItem('icon-code');
+            if (iconCode === '01n' || iconCode === '02n' || iconCode === '03n' 
+            || iconCode === '04n' || iconCode === '09n' || iconCode === '10n' 
+            || iconCode === '11n' || iconCode === '13n' || iconCode === '50n') {
+                day1DivEl.style.backgroundColor = '#191970';
+                day1DivEl.style.color = 'white';
+                day2DivEl.style.backgroundColor = '#191970';
+                day2DivEl.style.color = 'white';
+                day3DivEl.style.backgroundColor = '#191970';
+                day3DivEl.style.color = 'white';
+                day4DivEl.style.backgroundColor = '#191970';
+                day4DivEl.style.color = 'white';
+                day5DivEl.style.backgroundColor = '#191970';
+                day5DivEl.style.color = 'white';
+            } 
+
+            if (iconCode === '01d' || iconCode === '02d' || iconCode === '03d' 
+            || iconCode === '04d' || iconCode === '09d' || iconCode === '10d' 
+            || iconCode === '11d' || iconCode === '13d' || iconCode === '50d') {
+                day1DivEl.style.backgroundColor = '#87ceeb';
+                day1DivEl.style.color = '#191970';
+                day2DivEl.style.backgroundColor = '#87ceeb';
+                day2DivEl.style.color = '#191970';
+                day3DivEl.style.backgroundColor = '#87ceeb';
+                day3DivEl.style.color = '#191970';
+                day4DivEl.style.backgroundColor = '#87ceeb';
+                day4DivEl.style.color = '#191970';
+                day5DivEl.style.backgroundColor = '#87ceeb';
+                day5DivEl.style.color = '#191970';
+            }
         })
     })
     cityInputEl.value = '';
