@@ -179,24 +179,52 @@ function fetchWeather(data) {
             var day5DivEl = document.createElement('div');
             futureWeatherDivEl.append(day5DivEl);
 
-
-            let minTempArr = [];
-            let maxTempArr = [];
-            
-
-            for (var x = 0; x < 41; x++) {
+            for (var x = 0; x < 40; x++) {
                 var dateTimeArr = data.list[x].dt_txt;
                 var splitDateTimeArr = dateTimeArr.split(' ');
                 var dateOnly = splitDateTimeArr[0];
+                
                 var currentDt = moment().format('YYYY-MM-D');
-                while (dateOnly = currentDt) {
-                    minTempArr.push(data.list[x].main.temp_min);
-                    maxTempArr.push(data.list[x].main.temp_max);
-                    var currentMinTemp = Math.min(...minTempArr);
-                    var currentMaxTemp = Math.max(...maxTempArr);
-                    console.log(currentMaxTemp, currentMinTemp);
+                var plus1Day = moment().add(1, 'days').format('YYYY-MM-D');
+                var plus2Day = moment().add(2, 'days').format('YYYY-MM-D');
+                var plus3Day = moment().add(3, 'days').format('YYYY-MM-DD');
+                var plus4Day = moment().add(4, 'days').format('YYYY-MM-DD');
+                var plus5Day = moment().add(5, 'days').format('YYYY-MM-DD');
+                
+
+                if (currentDt === dateOnly) {
+                    console.log(x);
+                }
+
+                if (plus1Day === dateOnly) {
+                    console.log(x);
+                }
+            
+                if (plus2Day === dateOnly) {
+                    console.log(x);
+                }
+                
+                if (plus3Day === dateOnly) {
+                    console.log(x);
+                }
+
+                if (plus4Day === dateOnly) {
+                    console.log(x);
+                }
+
+                if (plus5Day === dateOnly) {
+                    console.log(x);
                 }
             }
+            // for (var x = 0; x < 41; x++) {
+            //     while (dateOnly = currentDt) {
+            //         minTempArr.push(data.list[x].main.temp_min);
+            //         maxTempArr.push(data.list[x].main.temp_max);
+            //         var currentMinTemp = Math.min(...minTempArr);
+            //         var currentMaxTemp = Math.max(...maxTempArr);
+            //         console.log(currentMaxTemp, currentMinTemp);
+            //     }
+            // }
 
 
 
