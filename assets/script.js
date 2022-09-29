@@ -191,29 +191,34 @@ function fetchWeather(data) {
                 var plus4Day = moment().add(4, 'days').format('YYYY-MM-DD');
                 var plus5Day = moment().add(5, 'days').format('YYYY-MM-DD');
                 
-
-                if (currentDt === dateOnly) {
-                    console.log(x);
+                
+                let tempArr = [];
+                while (currentDt === dateOnly) {
+                    // console.log(x);
+                    let tempx = data.list[x].main.temp;
+                    console.log(tempx)
+                    // tempArr.push(tempx);
+                    // console.log(tempArr);
                 }
 
                 if (plus1Day === dateOnly) {
-                    console.log(x);
+                    // console.log(x);
                 }
             
                 if (plus2Day === dateOnly) {
-                    console.log(x);
+                    // console.log(x);
                 }
-                
+
                 if (plus3Day === dateOnly) {
-                    console.log(x);
+                    // console.log(x);
                 }
 
                 if (plus4Day === dateOnly) {
-                    console.log(x);
+                    // console.log(x);
                 }
 
                 if (plus5Day === dateOnly) {
-                    console.log(x);
+                    // console.log(x);
                 }
             }
             // for (var x = 0; x < 41; x++) {
